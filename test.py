@@ -15,10 +15,14 @@ from misc.utils import *
 import scipy.io as sio
 from PIL import Image, ImageOps
 
+from pathlib import Path
+
 torch.cuda.set_device(0)
 torch.backends.cudnn.benchmark = True
 
-exp_name = '../SHHB_results'
+ROOT = os.getcwd()
+
+exp_name = ROOT + '/SHHB_results'
 if not os.path.exists(exp_name):
     os.mkdir(exp_name)
 
@@ -39,9 +43,9 @@ restore = standard_transforms.Compose([
     ])
 pil_to_tensor = standard_transforms.ToTensor()
 
-dataRoot = '../ProcessedData/shanghaitech_part_B/test'
+dataRoot = ROOT + '/ProcessedData/shanghaitech_part_B/test_data'
 
-model_path = 'xxx.pth'
+model_path = ROOT + '/05-ResNet-50_all_ep_35_mae_32.4_mse_76.1.pth'
 
 def main():
     
@@ -64,7 +68,7 @@ def test(file_list, model_path):
     preds = []
 
     for filename in file_list:
-    	print( filename )
+        print( filename )
         imgname = dataRoot + '/img/' + filename
         filename_no_ext = filename.split('.')[0]
 

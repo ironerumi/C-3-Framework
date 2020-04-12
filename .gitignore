@@ -1,3 +1,10 @@
+# repo
+*.png
+*.pth
+*.jpg
+ProcessedData/
+*_results/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
